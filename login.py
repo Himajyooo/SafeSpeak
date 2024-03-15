@@ -1,4 +1,5 @@
 import streamlit as st
+from admin_page import display_admin_page
 # Function to display login page
 
 def display_login_page():
@@ -12,5 +13,7 @@ def display_login_page():
         if email == "user@example.com" and password == "password":
             st.session_state.logged_in = True
             st.experimental_rerun()
+        if email == "admin@gmail.com" and password == "admin":
+            display_admin_page()
         else:
             st.error("Invalid email or password")
