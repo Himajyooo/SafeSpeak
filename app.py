@@ -5,11 +5,19 @@ from discussion_page import display_discussion_page
 # Streamlit app
 def main():
     st.title("Discussion Forum")
+
+    # Initialize session state if not already initialized
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+
+    if "selected_discussion" not in st.session_state:
+        st.session_state.selected_discussion = None
+
     # Check if user is logged in
-    if not st.session_state.get("logged_in"):
+    if not st.session_state.logged_in:
         display_login_page()
     else:
-        if st.experimental_get_query_params().get("selected_discussion"):
+        if st.session_state.selected_discussion:
             display_discussion_page()
         else:
             display_user_page()

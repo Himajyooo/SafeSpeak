@@ -4,7 +4,7 @@ import streamlit as st
 def display_discussion_page():
     st.title(f"Discussion:")# {selected_discussion}")
     
-    selected_discussion = st.experimental_get_query_params().get("selected_discussion")
+    selected_discussion = st.session_state.selected_discussion
     # Display comments for the selected discussion (you can retrieve comments from your database)
     if selected_discussion:
         st.write("Here is the content of the selected discussion.")
@@ -18,5 +18,9 @@ def display_discussion_page():
             # Placeholder for submitting the comment to your database
             st.success("Comment posted successfully")
         if st.button("Back"):
-            st.experimental_set_query_params(selected_discussion=None)
+            st.session_state.selected_discussion = None
+            st.session_state.page = "user"
             st.experimental_rerun()
+    else:
+        st.error("Discussion not selected")
+    
