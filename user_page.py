@@ -10,13 +10,16 @@ def display_user_page():
     # Display different discussions
     st.header("Discussions")
     if st.button("Discussion 1"):
-        display_discussion_page("Discussion 1")
+        st.experimental_set_query_params(selected_discussion="Discussion 1")
+        st.experimental_rerun()
 
     if st.button("Discussion 2"):
-        display_discussion_page("Discussion 2")
+        st.experimental_set_query_params(selected_discussion="Discussion 2")
+        st.experimental_rerun()
 
     if st.button("Discussion 3"):
-        display_discussion_page("Discussion 3")
+        st.experimental_set_query_params(selected_discussion="Discussion 3")
+        st.experimental_rerun()
 """import streamlit as st
 
 # Function to display user page
