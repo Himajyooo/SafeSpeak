@@ -16,11 +16,12 @@ def display_discussion_page():
         new_comment = st.text_area("Write your comment here")
         if st.button("Post Comment"):
             # Placeholder for submitting the comment to your database
-            st.success("Comment posted successfully")
+            st.success("Comment posted successfully")    
         if st.button("Back"):
-            st.session_state.selected_discussion = None
-            st.session_state.page = "user"
-            st.experimental_rerun()
+                st.session_state.selected_discussion = None
+                st.session_state.page = "user"
+                st.experimental_rerun()
     else:
         st.error("Discussion not selected")
+
     
