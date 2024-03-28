@@ -4,11 +4,9 @@ from discussion_page import display_discussion_page
 # Function to display user page
 def display_user_page():
     st.title("Welcome")
-    # Set up layout to align content to the right
-    left_col, _, right_col = st.columns([1, 4, 1])
-
-    # Place logout button in the right column
-    with right_col:
+    # Row for the logout button
+    col1, col2 = st.columns([7, 1])
+    with col2:
         if st.button("Logout", key="logout_button"):
             st.session_state.logged_in = False
             st.session_state.page = "login"
@@ -37,4 +35,4 @@ def display_user_page():
         st.session_state.page = "discussion"
         st.rerun()
 
-   
+display_user_page()
