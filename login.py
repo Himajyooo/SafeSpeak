@@ -47,7 +47,7 @@ def display_login_page():
         if user == "user" and password == "password":
             st.session_state.logged_in = True
             st.session_state.page = "user"
-            st.experimental_rerun()
+            st.rerun()
             
         elif user == "admin@gmail.com" and password == "admin":
             display_admin_page()

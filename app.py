@@ -4,8 +4,6 @@ from login import display_login_page
 from discussion_page import display_discussion_page
 
 def main():
-
-
     # Initialize session state if not already initialized
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
