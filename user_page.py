@@ -3,18 +3,22 @@ from discussion_page import display_discussion_page
 
 # Function to display user page
 def display_user_page():
-    st.title("User Page")
+    st.title("Welcome")
+    # Set up layout to align content to the right
+    left_col, _, right_col = st.columns([1, 4, 1])
+
+    # Place logout button in the right column
+    with right_col:
+        if st.button("Logout", key="logout_button"):
+            st.session_state.logged_in = False
+            st.session_state.page = "login"
+            st.rerun()
     # Load custom CSS
     with open("styles.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.write(f"Welcome, user")
 
-    # Logout button in the top right corner
-    if st.button("Logout", key="logout_button"):
-        st.session_state.logged_in = False
-        st.session_state.page = "login"
-        st.rerun()
     
     # Display different discussions
     st.header("Discussions")
@@ -33,9 +37,4 @@ def display_user_page():
         st.session_state.page = "discussion"
         st.rerun()
 
-    # Display back button only when on a discussion page
-    # if st.session_state.page == "discussion":
-    #     if st.button("Back"):
-    #         st.session_state.selected_discussion = None
-    #         st.session_state.page = "user"
-    #         #st.rerun()
+   
