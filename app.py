@@ -1,54 +1,53 @@
 import streamlit as st
+import mysql.connector
 from user_page import display_user_page
 from login import display_login_page
 from discussion_page import display_discussion_page
 
-# def create_connection():
-#     #Used to connect Python with MySQL
-#     con = mysql.connector.connect(\
-#           host = "localhost",\
-#           user = "root",
-#           password = "may@2023")
-#     cur = con.cursor()
-#     strSQL = "show databases"
-#     cur.execute(strSQL)
-#     r = cur.fetchall()
-#     if ("mkmartdb",) in r:
-#         pass
-#     else:  #Till here
-#         strSQL = "create database mkmartdb;"
-#         cur.execute(strSQL)
-#     strSQL = "select database();"
-#     cur.execute(strSQL)
-#     r = cur.fetchall()
-#     if r in ("mkmartdb",):
-#         pass
-#     else:
-#         strSQL = "use mkmartdb;"
-#         cur.execute(strSQL)
-#     strSQL = "show tables;"
-#     cur.execute(strSQL)
-#     r = cur.fetchall()
-#     if ("employee",) in r:
-#         pass
-#     else:
-#         strSQL = "create table employee("\
-#                 "empid int(5) primary key,name varchar(20),pass varchar(20),"\
-#                 "admin varchar(10) default 'no',salary float(20),"\
-#                 "phone_no varchar(50),city varchar(20),department varchar(20));"
-#         cur.execute(strSQL)
-#         strSQL="insert into employee values(007,null,'000','yes',null,null,null,null);"
-#         cur.execute(strSQL)
-#         con.commit()
-#     if ("item",) in r:
-#         pass
-#     else:
-#         strSQL = "create table item("\
-#                 "barcode varchar(20) primary key,name varchar(20),"\
-#                 "category varchar(20),price float(20),"\
-#                 "stock int);"
-#         cur.execute(strSQL)
-#     return con, cur
+def create_connection():
+    #Used to connect Python with MySQL
+    con = mysql.connector.connect(\
+          host = "localhost",\
+          user = "root",
+          password = "")
+    cur = con.cursor()
+    strSQL = "show databases"
+    cur.execute(strSQL)
+    r = cur.fetchall()
+    if ("safespeak",) in r:
+        pass
+    else:  #Till here
+        strSQL = "create database ;"
+        cur.execute(strSQL)
+    strSQL = "select database();"
+    cur.execute(strSQL)
+    r = cur.fetchall()
+    if r in ("safespeak",):
+        pass
+    else:
+        strSQL = "use safespeak;"
+        cur.execute(strSQL)
+    strSQL = "show tables;"
+    cur.execute(strSQL)
+    r = cur.fetchall()
+    if ("login",) in r:
+        pass
+    else:
+        strSQL = "create table login("\
+                "userid int(5) primary key,username varchar(20),pass varchar(20),email varchar(20));"
+        cur.execute(strSQL)
+        strSQL="insert into login values(001,'user','password','user@email.com');"
+        cur.execute(strSQL)
+        con.commit()
+    # if ("item",) in r:
+    #     pass
+    # else:
+    #     strSQL = "create table item("\
+    #             "barcode varchar(20) primary key,name varchar(20),"\
+    #             "category varchar(20),price float(20),"\
+    #             "stock int);"
+    #     cur.execute(strSQL)
+    return con, cur
 
 def main():
     # Initialize session state if not already initialized
