@@ -1,0 +1,33 @@
+body {
+    background-image: url('https://wallpaperboat.com/wp-content/uploads/2019/10/free-website-background-21.jpg'); /* URL of your background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.stApp {
+    background-color: transparent;
+}
+
+.stTextInput>div>div>input {
+    background-color: #f0f3f5; /* lighter shade */
+    color: #001F3F; /* navy blue color for input text */
+}
+
+.stButton>button {
+    background-color: #001f3f; /* dark navy blue */
+    color: white;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.stButton>button:hover {
+    background-color: #003366; /* slightly darker navy blue on hover */
+}
+
+.st-error {
+    color: #dc3545; /* error message color */
+}

@@ -8,16 +8,23 @@ def display_login_page():
     # Streamlit app
     st.title("SafeSpeak: Express Your Views")
     # Custom CSS for background color and styles
+    # Custom CSS for background color and styles
     custom_css = """
     <style>
         body {
-            background-color: #dbe9f7; /* pastel blue */
+            background-image: url('https://wallpaperboat.com/wp-content/uploads/2019/10/free-website-background-21.jpg'); /* URL of your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
         }
         .stApp {
-            background-color: #dbe9f7; /* pastel blue */
+            background-color: transparent; /* Set app background color as transparent */
+            padding: 0; /* Remove padding */
         }
         .stTextInput>div>div>input {
             background-color: #f0f3f5; /* lighter shade */
+            color: #001F3F;
         }
         .stButton>button {
             background-color: #001f3f; /* dark navy blue */
