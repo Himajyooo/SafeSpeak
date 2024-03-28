@@ -3,7 +3,10 @@ import streamlit as st
 # Function to display discussion page
 def display_discussion_page():
     st.title(f"Discussion:")# {selected_discussion}")
-    
+    # Load custom CSS
+    with open("styles.css", "r") as f:
+        css = f.read()
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     selected_discussion = st.session_state.selected_discussion
     # Display comments for the selected discussion (you can retrieve comments from your database)
     if selected_discussion:

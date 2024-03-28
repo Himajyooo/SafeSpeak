@@ -4,6 +4,10 @@ from discussion_page import display_discussion_page
 # Function to display user page
 def display_user_page():
     st.title("User Page")
+    # Load custom CSS
+    with open("styles.css", "r") as f:
+        css = f.read()
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.write(f"Welcome, user")
 
     # Logout button in the top right corner

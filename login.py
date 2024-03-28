@@ -7,43 +7,10 @@ from discussion_page import display_discussion_page
 def display_login_page():
     # Streamlit app
     st.title("SafeSpeak: Express Your Views")
-    # Custom CSS for background color and styles
-    # Custom CSS for background color and styles
-    custom_css = """
-    <style>
-        body {
-            background-image: url('https://wallpaperboat.com/wp-content/uploads/2019/10/free-website-background-21.jpg'); /* URL of your background image */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        .stApp {
-            background-color: transparent; /* Set app background color as transparent */
-            padding: 0; /* Remove padding */
-        }
-        .stTextInput>div>div>input {
-            background-color: #f0f3f5; /* lighter shade */
-            color: #001F3F;
-        }
-        .stButton>button {
-            background-color: #001f3f; /* dark navy blue */
-            color: white;
-            border-radius: 5px;
-            padding: 0.5rem 1rem;
-            border: none;
-            transition: background-color 0.3s;
-        }
-        .stButton>button:hover {
-            background-color: #003366; /* slightly darker navy blue on hover */
-        }
-        .st-error {
-            color: #dc3545; /* error message color */
-        }
-    </style>
-    """
-    st.markdown(custom_css, unsafe_allow_html=True)
-
+    # Load custom CSS
+    with open("styles.css", "r") as f:
+        css = f.read()
+    st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.title("Login")
 
     user = st.text_input("User Name")
