@@ -4,7 +4,7 @@ import streamlit as st
 def display_discussion_page():
     st.title(f"Discussion:")# {selected_discussion}")
     # Load custom CSS
-    with open("styles.css", "r") as f:
+    with open("css/styles.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     selected_discussion = st.session_state.selected_discussion

@@ -8,7 +8,7 @@ def display_login_page():
     # Streamlit app
     st.title("SafeSpeak: Express Your Views")
     # Load custom CSS
-    with open("styles.css", "r") as f:
+    with open("css/styles.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.title("Login")

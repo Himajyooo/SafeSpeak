@@ -12,7 +12,7 @@ def display_user_page():
             st.session_state.page = "login"
             st.rerun()
     # Load custom CSS
-    with open("styles.css", "r") as f:
+    with open("css/styles.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.write(f"Welcome, user")
@@ -34,5 +34,3 @@ def display_user_page():
         st.session_state.selected_discussion = "Discussion 3"
         st.session_state.page = "discussion"
         st.rerun()
-
-display_user_page()
