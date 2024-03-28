@@ -10,28 +10,28 @@ def display_user_page():
     if st.button("Logout", key="logout_button"):
         st.session_state.logged_in = False
         st.session_state.page = "login"
-        st.experimental_rerun()
+        st.rerun()
     
     # Display different discussions
     st.header("Discussions")
     if st.button("Discussion 1"):
         st.session_state.selected_discussion = "Discussion 1"
         st.session_state.page = "discussion"
-        st.experimental_rerun()
+        st.rerun()
 
     if st.button("Discussion 2"):
         st.session_state.selected_discussion = "Discussion 2"
         st.session_state.page = "discussion"
-        st.experimental_rerun()
+        st.rerun()
 
     if st.button("Discussion 3"):
         st.session_state.selected_discussion = "Discussion 3"
         st.session_state.page = "discussion"
-        st.experimental_rerun()
+        st.rerun()
 
     # Display back button only when on a discussion page
-    if st.session_state.page == "discussion":
-        if st.button("Back"):
-            st.session_state.selected_discussion = None
-            st.session_state.page = "user"
-            #st.experimental_rerun()
+    # if st.session_state.page == "discussion":
+    #     if st.button("Back"):
+    #         st.session_state.selected_discussion = None
+    #         st.session_state.page = "user"
+    #         #st.rerun()

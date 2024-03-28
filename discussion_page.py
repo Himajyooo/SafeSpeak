@@ -20,7 +20,7 @@ def display_discussion_page():
         if st.button("Back"):
                 st.session_state.selected_discussion = None
                 st.session_state.page = "user"
-                st.experimental_rerun()
+                st.rerun()
     else:
         st.error("Discussion not selected")
 
