@@ -3,9 +3,8 @@ from user_page import display_user_page
 from login import display_login_page
 from discussion_page import display_discussion_page
 
-# Streamlit app
 def main():
-    st.title("SafeSpeak: Express Your Views")
+
 
     # Initialize session state if not already initialized
     if "logged_in" not in st.session_state:

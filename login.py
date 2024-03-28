@@ -1,8 +1,12 @@
 import streamlit as st
 from admin_page import display_admin_page
+from user_page import display_user_page
+from discussion_page import display_discussion_page
 
 # Function to display login page
 def display_login_page():
+    # Streamlit app
+    st.title("SafeSpeak: Express Your Views")
     # Custom CSS for background color and styles
     custom_css = """
     <style>
@@ -35,20 +39,20 @@ def display_login_page():
 
     st.title("Login")
 
-    email = st.text_input("Email")
+    user = st.text_input("User Name")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
         # Check if email and password are correct (dummy check)
-        if email == "user@example.com" and password == "password":
+        if user == "user" and password == "password":
             st.session_state.logged_in = True
             st.session_state.page = "user"
             st.experimental_rerun()
             
-        elif email == "admin@gmail.com" and password == "admin":
+        elif user == "admin@gmail.com" and password == "admin":
             display_admin_page()
         else:
             st.error("Invalid email or password")
 
 # Call the function to display login page
-display_login_page()
+#display_login_page()   
