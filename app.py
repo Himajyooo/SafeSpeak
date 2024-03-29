@@ -3,6 +3,7 @@ import mysql.connector
 from user_page import display_user_page
 from login import display_login_page
 from discussion_page import display_discussion_page
+from signup import display_signup_page
 
 # def create_connection():
 #     #Used to connect Python with MySQL
@@ -59,6 +60,9 @@ def main():
 
     if "page" not in st.session_state:
         st.session_state.page = "user"
+    
+    if "signup" not in st.session_state:
+        st.session_state.signup = False
 
     # Check if user is logged in
     if not st.session_state.logged_in:
@@ -66,6 +70,10 @@ def main():
     else:
         if st.session_state.selected_discussion:
             display_discussion_page()
+        # elif st.session_state.page:
+        #     display_user_page()
+        elif st.session_state.signup:
+            display_signup_page()
         else:
             display_user_page()
 
