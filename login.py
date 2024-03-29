@@ -3,14 +3,14 @@ from admin_page import display_admin_page
 import mysql.connector
 from user_page import display_user_page
 from discussion_page import display_discussion_page
-from signup import display_signup_page
+#from signup import display_signup_page
 
 def create_connection():
     #Used to connect Python with MySQL
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "")
+          password = "may@2023")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)
