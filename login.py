@@ -10,7 +10,7 @@ def create_connection():
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "may@2023")
+          password = "")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)
@@ -69,14 +69,15 @@ def display_login_page():
         cur.execute(q,(user,password))
         r=cur.fetchone()
         # Check if email and password are correct (dummy check)
-        if r is None:
-            st.error("Invalid email or password")
-        elif user == "admin@gmail.com" and password == "admin":
+            
+        if user == "admin@gmail.com" and password == "admin":
             display_admin_page()
-        else:
+        elif r is not None:
             st.session_state.logged_in = True
             st.session_state.page = "user"
             st.rerun()
+        else:
+            st.error("Invalid email or password")
         con.close()
     elif st.button("No account?\nSign Up"):
         st.session_state.logged_in = True
