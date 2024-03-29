@@ -2,7 +2,12 @@ import streamlit as st
 import mysql.connector
 from login import create_connection
 from email_validator import validate_email, EmailNotValidError
-
+# Function to check if the username is unique
+def is_username_unique(username, cursor):
+    sql = "SELECT COUNT(*) FROM login WHERE username = %s"
+    cursor.execute(sql, (username,))
+    result = cursor.fetchone()
+    return result[0] == 0
 def display_signup_page():
     st.title("Sign Up")
     with open("css/styles.css", "r") as f:
@@ -21,14 +26,21 @@ def display_signup_page():
         try:
             # Validate the email using email-validator library
             valid = validate_email(email)
-            strsql="insert into login (username,pass,email) values(%s,%s,%s)"
-            #st.success("Valid email format!")
-            cur.execute(strsql,L)
-            con.commit()
-            con.close()
-            
-            st.success(f"Sign up successful! Username: {username}, Email: {email}, Password: {password1}")
-
+            if not valid:
+                st.error("Invalid email format. Please enter a valid email address.")
+            else:
+                con, cur = create_connection()
+                # Check if the username is unique
+                if is_username_unique(username, cur):
+                    # Insert user into database
+                    sql = "INSERT INTO login (username, pass, email) VALUES (%s, %s, %s)"
+                    data = (username, password1, email)
+                    cur.execute(sql, data)
+                    con.commit()
+                    con.close()
+                    st.success(f"Sign up successful! Username: {username}, Email: {email}, Password: {password1}")
+                else:
+                    st.error("Username already exists. Please choose a different username.")
         except EmailNotValidError as e:
             st.error("Invalid email format. Please enter a valid email address.")
         

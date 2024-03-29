@@ -35,7 +35,7 @@ def create_connection():
         pass
     else:
         strSQL = "create table login("\
-                "userid int(5) primary key,username varchar(20),pass varchar(20),email varchar(20));"
+                "userid int(5) primary key,username varchar(20) not null,pass varchar(20) not null,email varchar(20) not null);"
         cur.execute(strSQL)
         strSQL="insert into login values(001,'user','password','user@email.com');"
         cur.execute(strSQL)
