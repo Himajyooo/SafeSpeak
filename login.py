@@ -10,7 +10,7 @@ def create_connection():
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "may@2023")
+          password = "")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)
@@ -83,8 +83,4 @@ def display_login_page():
         st.session_state.logged_in = True
         st.session_state.signup = True
         st.rerun()
-        #display_signup_page()
-            
-
-# Call the function to display login page
-#display_login_page()   
+  

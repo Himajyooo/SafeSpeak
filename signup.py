@@ -11,7 +11,7 @@ def display_signup_page():
     username = st.text_input("Username")
     email = st.text_input("Email")
     password1 = st.text_input("Password", type="password")
-    #create_connection()
+    
     # Sign up button
     if st.button("Sign Up"):
         L = (username,password1,email)
