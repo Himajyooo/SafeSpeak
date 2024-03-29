@@ -3,6 +3,7 @@ from admin_page import display_admin_page
 import mysql.connector
 from user_page import display_user_page
 from discussion_page import display_discussion_page
+from signup import display_signup_page
 
 def create_connection():
     #Used to connect Python with MySQL
@@ -50,7 +51,7 @@ def create_connection():
     return con, cur
 # Function to display login page
 def display_login_page():
-    create_connection();
+    create_connection()
     # Streamlit app
     st.title("SafeSpeak: Express Your Views")
     # Load custom CSS
@@ -73,11 +74,15 @@ def display_login_page():
         elif user == "admin@gmail.com" and password == "admin":
             display_admin_page()
         else:
-            #user == "user" and password == "password":
             st.session_state.logged_in = True
             st.session_state.page = "user"
             st.rerun()
         con.close()
+    elif st.button("No account?\nSign Up"):
+        st.session_state.logged_in = True
+        st.session_state.signup = True
+        st.rerun()
+        #display_signup_page()
             
 
 # Call the function to display login page
