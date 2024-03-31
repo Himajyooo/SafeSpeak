@@ -31,5 +31,3 @@ def display_discussion_page():
             st.rerun()
     else:
         st.error("Discussion not selected")
-
-    

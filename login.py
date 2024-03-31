@@ -1,8 +1,8 @@
 import streamlit as st
 from admin_page import display_admin_page
 import mysql.connector
-from user_page import display_user_page
-from discussion_page import display_discussion_page
+#from user_page import display_user_page
+#from discussion_page import display_discussion_page
 #from signup import display_signup_page
 
 def create_connection():
@@ -10,7 +10,7 @@ def create_connection():
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "may@2023")
+          password = "")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)
@@ -40,14 +40,15 @@ def create_connection():
         strSQL="insert into login values(001,'user','password','user@email.com');"
         cur.execute(strSQL)
         con.commit()
-    # if ("item",) in r:
-    #     pass
-    # else:
-    #     strSQL = "create table item("\
-    #             "barcode varchar(20) primary key,name varchar(20),"\
-    #             "category varchar(20),price float(20),"\
-    #             "stock int);"
-    #     cur.execute(strSQL)
+    if ("comment",) in r:
+        pass
+    else:
+        strSQL = "create table comment("\
+                "comment_id int auto_increment primary key, "\
+                "userid  int(5),comment_desc varchar(500), "\
+                "FOREIGN KEY (userid) REFERENCES login(userid));"
+        cur.execute(strSQL)
+        con.commit()
     return con, cur
 # Function to display login page
 def display_login_page():
