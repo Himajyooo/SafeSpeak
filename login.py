@@ -35,17 +35,27 @@ def create_connection():
         pass
     else:
         strSQL = "create table login("\
-                "userid int(5) primary key,username varchar(20) not null,pass varchar(20) not null,email varchar(20) not null);"
+                "userid int(5) primary key auto_increment ,username varchar(20) not null,"\
+                "pass varchar(20) not null,email varchar(20) not null);"
         cur.execute(strSQL)
         strSQL="insert into login values(001,'user','password','user@email.com');"
         cur.execute(strSQL)
         con.commit()
+    if ("discussion",) in r:
+        pass
+    else:
+        strSQL = "create table discussion("\
+                "discussion_id int(5) primary key auto_increment,d_name varchar(20) not null);"
+        cur.execute(strSQL)
+        con.commit()    
     if ("comment",) in r:
         pass
     else:
         strSQL = "create table comment("\
                 "comment_id int auto_increment primary key, "\
-                "userid  int(5),comment_desc varchar(500), "\
+                "userid  int(5),comment_desc text, "\
+                "discussion_id int(5),"\
+                "FOREIGN KEY (discussion_id) REFERENCES discussion(discussion_id),"\
                 "FOREIGN KEY (userid) REFERENCES login(userid));"
         cur.execute(strSQL)
         con.commit()
