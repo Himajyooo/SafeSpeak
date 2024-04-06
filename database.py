@@ -42,6 +42,8 @@ def create_connection():
         strSQL = "create table discussion("\
                 "discussion_id int(5) primary key auto_increment,d_name varchar(20) not null);"
         cur.execute(strSQL)
+        strSQL="insert into discussion (d_name) values('discussion1'),('discussion2'),('discussion3');"
+        cur.execute(strSQL)
         con.commit()    
     if ("comment",) in r:
         pass

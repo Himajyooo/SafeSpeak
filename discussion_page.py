@@ -19,7 +19,7 @@ def display_discussion_page():
         #st.write("Here is the content of the selected discussion.")
         st.header("Comments")
         d_name=tuple(d_name)
-        #cur.execute("select username, comment_desc from comment where discussion_id=%s",d_name)
+        #cur.execute("select username, comment_desc from comment,login where discussion_id=%s",d_name)
         
 
         # Placeholder for displaying comments
