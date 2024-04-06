@@ -9,9 +9,12 @@ def main():
     # Initialize session state if not already initialized
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
+        st.session_state.user_id = None
+        st.session_state.username = None
 
     if "selected_discussion" not in st.session_state:
         st.session_state.selected_discussion = None
+        st.session_state.d_id = None
 
     if "page" not in st.session_state:
         st.session_state.page = "user"
@@ -23,6 +26,7 @@ def main():
     if not st.session_state.logged_in:
         display_login_page()
     else:
+
         if st.session_state.selected_discussion:
             display_discussion_page()
         # elif st.session_state.page:

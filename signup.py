@@ -1,6 +1,6 @@
 import streamlit as st
 import mysql.connector
-from login import create_connection
+from database import create_connection
 from email_validator import validate_email, EmailNotValidError
 # Function to check if the username is unique
 def is_username_unique(username, cursor):

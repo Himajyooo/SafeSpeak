@@ -1,9 +1,14 @@
 import streamlit as st
 from discussion_page import display_discussion_page
+from database import create_connection
 
 # Function to display user page
 def display_user_page():
-    st.title("Welcome")
+    con,cur=create_connection()
+    user_id=st.session_state.user_id
+    user_name=st.session_state.username
+   # cur.execute("")
+    st.title(f"Welcome {user_name}")
     # Row for the logout button
     col1, col2 = st.columns([7, 1])
     with col2:
@@ -21,7 +26,10 @@ def display_user_page():
     # Display different discussions
     st.header("Discussions")
     if st.button("Discussion 1"):
+        cur.execute("select discussion_id from discussion where d_name ='discussion1'")
+        d_id= cur.fetchone()[0]
         st.session_state.selected_discussion = "Discussion 1"
+        st.session_state.d_id = d_id
         st.session_state.page = "discussion"
         st.rerun()
 
