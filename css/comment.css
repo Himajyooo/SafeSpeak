@@ -1,0 +1,25 @@
+/* Define your custom styles here */
+
+.comment-container {
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px; /* Apply rounded corners to comment containers */
+}
+
+.comment-text {
+    color: #FFFFFF;
+    font-style: italic;
+}
+
+.light-blue-bg {
+    background-color: #001f3f; /* Light blue background */
+}
+
+.medium-blue-bg {
+    background-color: #1e90ff; /* Medium blue background */
+}
+
+.dark-blue-bg {
+    background-color: #0077be; /* Darker shade of blue background */
+}
