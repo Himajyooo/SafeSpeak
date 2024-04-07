@@ -11,7 +11,7 @@ def display_user_page():
     # Row for the logout button
     col1, col2 = st.columns([7, 1])
     with col2:
-        if st.button("Logout", key="logout_button"):
+        if st.sidebar.button("Logout", key="logout_button"):
             st.session_state.logged_in = False
             st.session_state.page = "login"
             st.rerun()
@@ -22,6 +22,11 @@ def display_user_page():
     st.write(f"Welcome, user")
 
     # Display different discussions
+    # Add a button in the sidebar to add new discussion
+    # if st.sidebar.button("+ Add Discussion"):
+    #     user_input = st.text_input("Enter new discussion")
+    #     cur.execute("insert into discussion (d_name) values (%s)",(user_input,))
+    #     con.commit()
     st.header("Discussions")
     if st.button("Discussion 1"):
         cur.execute("select discussion_id from discussion where d_name ='discussion1'")
