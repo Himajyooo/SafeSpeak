@@ -28,10 +28,7 @@ def main():
     else:
 
         if st.session_state.selected_discussion:
-            
             display_discussion_page()
-        # elif st.session_state.page:
-        #     display_user_page()
         elif st.session_state.signup:
             display_signup_page()
         else:

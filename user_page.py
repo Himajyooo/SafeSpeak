@@ -7,7 +7,6 @@ def display_user_page():
     con,cur=create_connection()
     user_id=st.session_state.user_id
     user_name=st.session_state.username
-   # cur.execute("")
     st.title(f"Welcome {user_name}")
     # Row for the logout button
     col1, col2 = st.columns([7, 1])
@@ -22,7 +21,6 @@ def display_user_page():
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.write(f"Welcome, user")
 
-    
     # Display different discussions
     st.header("Discussions")
     if st.button("Discussion 1"):

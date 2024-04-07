@@ -47,8 +47,6 @@ def display_signup_page():
                         st.error("Username already exists. Please choose a different username.")
             except EmailNotValidError as e:
                 st.error("Invalid email format. Please enter a valid email address.")
-
-        
         
         # Redirect to login page
     if st.button("Go back"):
