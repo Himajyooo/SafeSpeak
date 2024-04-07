@@ -28,17 +28,23 @@ def display_user_page():
     if st.button("Discussion 1"):
         cur.execute("select discussion_id from discussion where d_name ='discussion1'")
         d_id= cur.fetchone()[0]
-        st.session_state.selected_discussion = "Discussion 1"
+        st.session_state.selected_discussion = "discussion1"
         st.session_state.d_id = d_id
         st.session_state.page = "discussion"
         st.rerun()
 
     if st.button("Discussion 2"):
-        st.session_state.selected_discussion = "Discussion 2"
+        cur.execute("select discussion_id from discussion where d_name ='discussion2'")
+        d_id= cur.fetchone()[0]
+        st.session_state.selected_discussion = "discussion2"
+        st.session_state.d_id = d_id
         st.session_state.page = "discussion"
         st.rerun()
 
     if st.button("Discussion 3"):
-        st.session_state.selected_discussion = "Discussion 3"
+        cur.execute("select discussion_id from discussion where d_name ='discussion3'")
+        d_id= cur.fetchone()[0]
+        st.session_state.selected_discussion = "discussion3"
+        st.session_state.d_id = d_id
         st.session_state.page = "discussion"
         st.rerun()

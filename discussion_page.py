@@ -2,13 +2,13 @@ import streamlit as st
 from database import create_connection
 import time
 # Function to display discussion page
-def display_comments(con, cur):
-
+def display_comments(con, cur,d_name):
+    print(d_name)
     with open("css/comment.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
-    sql = "SELECT l.username, c.comment_desc FROM comment c JOIN login l ON c.userid = l.userid JOIN discussion d ON c.discussion_id = d.discussion_id WHERE d.d_name ='discussion1'"
-    cur.execute(sql)
+    sql = "SELECT l.username, c.comment_desc FROM comment c JOIN login l ON c.userid = l.userid JOIN discussion d ON c.discussion_id = d.discussion_id WHERE d.d_name =%s"
+    cur.execute(sql,(d_name,))
     q = cur.fetchall()
     if len(q) == 0:
         st.write("No comments posted yet")
@@ -38,7 +38,7 @@ def display_discussion_page():
     if d_name:
         #st.write("Here is the content of the selected discussion.")
         st.header("Comments")
-        display_comments(con,cur)
+        display_comments(con,cur,d_name)
         
         new_comment = st.text_area("Write your comment here")
         if st.button("Post Comment"):
