@@ -13,3 +13,9 @@ def display_admin_page():
     if st.button("View Reports"):
         st.write(f"Detailed report of users")
 
+    col1, col2 = st.columns([7, 1])
+    with col2:
+        if st.sidebar.button("Logout", key="logout_button"):
+            st.session_state.logged_in = False
+            st.session_state.admin = False
+            st.rerun()
