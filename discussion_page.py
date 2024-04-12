@@ -1,6 +1,8 @@
 import streamlit as st
 from database import create_connection
 import time
+from transformers import BertForSequenceClassification, BertTokenizer
+import torch
 # Function to display discussion page
 def display_comments(con, cur,d_name):
     print(d_name)
@@ -43,12 +45,26 @@ def display_discussion_page():
         new_comment = st.text_area("Write your comment here")
         if st.button("Post Comment"):
             # Placeholder for submitting the comment to your database
-            user_name = st.session_state.username
-            cur.execute("insert into comment (discussion_id,comment_desc,userid) values (%s,%s,%s)",(d_id,new_comment,user_id))
-            con.commit()
-            st.success("Comment posted successfully")
-            time.sleep(1)
-            st.rerun()
+            # Load saved model and tokenizer
+            model = BertForSequenceClassification.from_pretrained('H:\SafeSpeak\Toxic Model')
+            tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+            #new_comment = "that was good point"
+            # new_comment = "go to hell"
+            encoded_comment = tokenizer(new_comment, padding='max_length', truncation=True, max_length=128, return_tensors='pt')
+            output = model(**encoded_comment)
+            probabilities = torch.nn.functional.softmax(output.logits, dim=-1)
+            predicted_label = torch.argmax(probabilities, dim=-1)
+            if(predicted_label==1):
+                user_name = st.session_state.username
+                cur.execute("insert into comment (discussion_id,comment_desc,userid) values (%s,%s,%s)",(d_id,new_comment,user_id))
+                con.commit()
+                st.success("Comment posted successfully")
+                time.sleep(1)
+                st.rerun()
+            else:
+                st.error("Dont say cuss words guys")
+                time.sleep(1)
+                st.rerun()
              
         if st.button("Back"):
             st.session_state.selected_discussion = None
