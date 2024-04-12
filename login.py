@@ -22,8 +22,10 @@ def display_login_page():
         r=cur.fetchone()
         # Check if email and password are correct (dummy check)
             
-        if user == "admin@gmail.com" and password == "admin":
-            display_admin_page()
+        if user == "admin" and password == "admin":
+            st.session_state.logged_in = True
+            st.session_state.admin = True
+            st.rerun()
         elif r is not None:
             st.session_state.logged_in = True
             st.session_state.page = "user"

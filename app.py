@@ -4,6 +4,7 @@ from user_page import display_user_page
 from login import display_login_page
 from discussion_page import display_discussion_page
 from signup import display_signup_page
+from admin_page import display_admin_page
 
 def main():
     # Initialize session state if not already initialized
@@ -18,6 +19,9 @@ def main():
 
     if "page" not in st.session_state:
         st.session_state.page = "user"
+
+    if "admin" not in st.session_state:
+        st.session_state.admin = False
     
     if "signup" not in st.session_state:
         st.session_state.signup = False
@@ -26,11 +30,12 @@ def main():
     if not st.session_state.logged_in:
         display_login_page()
     else:
-
         if st.session_state.selected_discussion:
             display_discussion_page()
         elif st.session_state.signup:
             display_signup_page()
+        elif st.session_state.admin:
+            display_admin_page()
         else:
             display_user_page()
 
