@@ -5,7 +5,7 @@ def create_connection():
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "may@2023")
+          password = "Seethal_19")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)
@@ -34,6 +34,17 @@ def create_connection():
                 "pass varchar(20) not null,email varchar(20) not null);"
         cur.execute(strSQL)
         strSQL="insert into login values(001,'user','password','user@email.com');"
+        cur.execute(strSQL)
+        con.commit()
+    if ("toxic",) in r:
+        pass
+    else:
+        strSQL = "create table toxic("\
+                "toxic_id int auto_increment primary key, "\
+                "userid  int(5),comment_desc text, "\
+                "discussion_id int(5),username varchar(20) not null,"\
+                "FOREIGN KEY (discussion_id) REFERENCES discussion(discussion_id),"\
+                "FOREIGN KEY (userid) REFERENCES login(userid));"
         cur.execute(strSQL)
         con.commit()
     if ("discussion",) in r:
