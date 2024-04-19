@@ -30,6 +30,7 @@ def display_discussion_page():
     d_name=st.session_state.selected_discussion
     d_id =st.session_state.d_id
     user_id=st.session_state.user_id
+    user_name=st.session_state.username
 
     st.title(f"Discussion:{d_name}")
     # Load custom CSS
@@ -56,7 +57,7 @@ def display_discussion_page():
             # Placeholder for submitting the comment to your database
             # Load saved model and tokenizer
             else:
-                model = BertForSequenceClassification.from_pretrained('H:\SafeSpeak\Toxic Model')
+                model = BertForSequenceClassification.from_pretrained(r'C:\Users\Seethal Anil\OneDrive\Desktop\SafeSpeak\SafeSpeak\Toxic Model')
                 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
                 #new_comment = "that was good point"
                 # new_comment = "go to hell"
@@ -72,6 +73,8 @@ def display_discussion_page():
                     time.sleep(1)
                     st.rerun()
                 else:
+                    cur.execute("insert into toxic (discussion_id,comment_desc,userid,username) values (%s,%s,%s,%s)",(d_id,new_comment,user_id,user_name))
+                    con.commit()
                     st.error("Dont say cuss words guys")
                     time.sleep(5)
                     st.rerun()
