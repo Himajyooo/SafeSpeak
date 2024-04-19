@@ -36,13 +36,20 @@ def display_discussion_page():
     with open("css/styles.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+    if "my_text" not in st.session_state:
+        st.session_state.my_text = ""
+
+    def submit():
+        st.session_state.my_text = st.session_state.widget
+        st.session_state.widget = ""
     
     if d_name:
         #st.write("Here is the content of the selected discussion.")
         st.header("Comments")
         display_comments(con,cur,d_name)
         
-        new_comment = st.text_area("Write your comment here")
+        st.text_area("Write your comment here", key="widget", on_change=submit)
+        new_comment = st.session_state.my_text
         if st.button("Post Comment"):
             if not new_comment:
                 st.error("Type something.")
@@ -66,7 +73,7 @@ def display_discussion_page():
                     st.rerun()
                 else:
                     st.error("Dont say cuss words guys")
-                    time.sleep(1)
+                    time.sleep(5)
                     st.rerun()
              
         if st.button("Back"):
