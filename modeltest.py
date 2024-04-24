@@ -2,7 +2,7 @@ from transformers import BertForSequenceClassification, BertTokenizer
 import torch
 
 # Load saved model and tokenizer
-#model = BertForSequenceClassification.from_pretrained('h:\modeltest.py')
+model = BertForSequenceClassification.from_pretrained(r'C:\Users\samee\OneDrive\Desktop\SafeSpeak\SafeSpeak\modeltest.py')
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 new_comment = "that was good point"
 # new_comment = "go to hell"

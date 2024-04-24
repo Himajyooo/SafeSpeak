@@ -16,7 +16,7 @@ def display_user_page():
             st.session_state.page = "login"
             st.rerun()
     # Load custom CSS
-    with open("css/styles.css", "r") as f:
+    with open("css/user.css", "r") as f:
         css = f.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
     st.write(f"Welcome, user")

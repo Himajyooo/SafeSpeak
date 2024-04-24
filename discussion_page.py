@@ -46,7 +46,8 @@ def display_discussion_page():
     
     if d_name:
         #st.write("Here is the content of the selected discussion.")
-        st.header("Comments")
+        # Add a custom style to the header
+        st.markdown("<h2 style='color: white;'>Comments</h2>", unsafe_allow_html=True)
         display_comments(con,cur,d_name)
         
         st.text_area("Write your comment here", key="widget", on_change=submit)
@@ -57,7 +58,7 @@ def display_discussion_page():
             # Placeholder for submitting the comment to your database
             # Load saved model and tokenizer
             else:
-                model = BertForSequenceClassification.from_pretrained(r'C:\Users\Seethal Anil\OneDrive\Desktop\SafeSpeak\SafeSpeak\Toxic Model')
+                model = BertForSequenceClassification.from_pretrained(r'C:\Users\samee\OneDrive\Desktop\SafeSpeak\SafeSpeak\Toxic Model')
                 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
                 #new_comment = "that was good point"
                 # new_comment = "go to hell"

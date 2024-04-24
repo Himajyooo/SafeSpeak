@@ -5,7 +5,7 @@ def create_connection():
     con = mysql.connector.connect(\
           host = "localhost",\
           user = "root",
-          password = "Seethal_19")
+          password = "")
     cur = con.cursor()
     strSQL = "show databases"
     cur.execute(strSQL)

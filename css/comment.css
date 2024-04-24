@@ -1,4 +1,12 @@
 /* Define your custom styles here */
+body {
+    background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Blue-light-in-space-star-abstract-1920x1080-wallpapers.jpg');/*URL of your background image */
+    /* background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Free-Photos-Light-Blue-Backgrounds.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
 
 .comment-container {
     display: inline-block;
@@ -20,6 +28,12 @@
     background-color: #1e90ff; /* Medium blue background */
 }
 
+.title {
+    color : white;
+}
+.comments-header{
+    color : white;
+}
 .dark-blue-bg {
     background-color: #0077be; /* Darker shade of blue background */
 }
